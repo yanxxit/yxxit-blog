@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>windows nginx natapp | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="实现目标 通过nginx实现本地资源代理 https 学习及使用 方便本地前端服务调试  相关环境 windows 7 64 nginx v 1.6 natapp phpStudy  阿里云  基本操作线上配置 注册个人域名 注册natapp 域名和natapp进行绑定  nginx 配置常用命令 123456nginx -s stop 强制关闭 nginx -s quit 安全关闭 nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows nginx natapp">
+<meta property="og:url" content="http://yoursite.com/2017/03/05/windows nginx natapp/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="实现目标 通过nginx实现本地资源代理 https 学习及使用 方便本地前端服务调试  相关环境 windows 7 64 nginx v 1.6 natapp phpStudy  阿里云  基本操作线上配置 注册个人域名 注册natapp 域名和natapp进行绑定  nginx 配置常用命令 123456nginx -s stop 强制关闭 nginx -s quit 安全关闭 nginx">
+<meta property="og:image" content="http://yoursite.com/view/img/phpStudy.jpg">
+<meta property="og:image" content="http://yoursite.com/view/img/Apache-edit.jpg">
+<meta property="og:image" content="http://yoursite.com/view/img/nssm-edit.jpg">
+<meta property="og:image" content="http://yoursite.com/view/img/background-list.jpg">
+<meta property="og:updated_time" content="2017-03-05T14:43:50.318Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="windows nginx natapp">
+<meta name="twitter:description" content="实现目标 通过nginx实现本地资源代理 https 学习及使用 方便本地前端服务调试  相关环境 windows 7 64 nginx v 1.6 natapp phpStudy  阿里云  基本操作线上配置 注册个人域名 注册natapp 域名和natapp进行绑定  nginx 配置常用命令 123456nginx -s stop 强制关闭 nginx -s quit 安全关闭 nginx">
+<meta name="twitter:image" content="http://yoursite.com/view/img/phpStudy.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/view/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-windows nginx natapp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/05/windows nginx natapp/" class="article-date">
+  <time datetime="2017-03-05T13:30:33.636Z" itemprop="datePublished">2017-03-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      windows nginx natapp
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="实现目标"><a href="#实现目标" class="headerlink" title="实现目标"></a>实现目标</h2><ol>
+<li>通过nginx实现本地资源代理</li>
+<li>https 学习及使用</li>
+<li>方便本地前端服务调试</li>
+</ol>
+<h2 id="相关环境"><a href="#相关环境" class="headerlink" title="相关环境"></a>相关环境</h2><ul>
+<li>windows 7 64</li>
+<li>nginx v 1.6</li>
+<li><a href="https://natapp.cn" target="_blank" rel="external">natapp</a></li>
+<li>phpStudy </li>
+<li>阿里云</li>
+</ul>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="线上配置"><a href="#线上配置" class="headerlink" title="线上配置"></a>线上配置</h3><ol>
+<li>注册个人域名</li>
+<li>注册natapp</li>
+<li>域名和natapp进行绑定</li>
+</ol>
+<h3 id="nginx-配置"><a href="#nginx-配置" class="headerlink" title="nginx 配置"></a>nginx 配置</h3><p>常用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">nginx -s stop 强制关闭 </div><div class="line">nginx -s quit 安全关闭 </div><div class="line">nginx -s reload 改变配置文件的时候，重启nginx工作进程，来时配置文件生效 </div><div class="line">nginx -t  测试是否成功</div><div class="line"></div><div class="line">.\nginx.exe -t # windows 下要添加.\</div></pre></td></tr></table></figure>
+<p><strong>http 代理配置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"># 静态页面</div><div class="line">location /html &#123;</div><div class="line">    alias   F:/HTML/year;</div><div class="line">&#125;</div><div class="line"># 端口代理</div><div class="line">location /demo &#123;</div><div class="line">    proxy_pass  http://127.0.0.1:6061;</div><div class="line">&#125;</div><div class="line"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</div><div class="line"># php环境代理</div><div class="line">location ~ \.php(.*)$  &#123;</div><div class="line">	root E:/WWW;# 这里是站点的根目录</div><div class="line">    fastcgi_pass   127.0.0.1:9000;</div><div class="line">    fastcgi_index  index.php;</div><div class="line">    fastcgi_split_path_info  ^((?U).+\.php)(/?.+)$;</div><div class="line">    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</div><div class="line">    fastcgi_param  PATH_INFO  $fastcgi_path_info;</div><div class="line">    fastcgi_param  PATH_TRANSLATED  $document_root$fastcgi_path_info;</div><div class="line">    include        fastcgi_params;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>https 代理配置</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen       443;</div><div class="line">    server_name  localhost;</div><div class="line"></div><div class="line">    ssl                  on;</div><div class="line">    ssl_certificate      https/214009859140175.pem; # ssl 加密文件</div><div class="line">    ssl_certificate_key  https/214009859140175.key; # ssl 加密文件</div><div class="line"></div><div class="line">    ssl_session_timeout  5m;</div><div class="line"></div><div class="line">    ssl_protocols  SSLv2 SSLv3 TLSv1;</div><div class="line">    ssl_ciphers  HIGH:!aNULL:!MD5;</div><div class="line">    ssl_prefer_server_ciphers   on;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        root   html;</div><div class="line">        index  index.html index.htm;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    # 静态页面</div><div class="line">    location /html &#123;</div><div class="line">        alias   F:/HTML/year;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    # https 功能测试</div><div class="line">    location /https-demo &#123;</div><div class="line">        proxy_pass  http://127.0.0.1:6061;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="phpStudy-列表"><a href="#phpStudy-列表" class="headerlink" title="phpStudy 列表"></a>phpStudy 列表</h3><p><img src="/view/img/phpStudy.jpg" alt="phpStudy 配置"></p>
+<h3 id="Apache-服务配置"><a href="#Apache-服务配置" class="headerlink" title="Apache 服务配置"></a>Apache 服务配置</h3><p><img src="/view/img/Apache-edit.jpg" alt="Apache 环境配置"></p>
+<h3 id="php-配置"><a href="#php-配置" class="headerlink" title="php 配置"></a>php 配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php-cgi.exe -b 127.0.0.1:9000-c E:\WWW</div></pre></td></tr></table></figure>
+<p>不运行上面代码，无法访问php</p>
+<h3 id="nssm-开机启动-amp-后台运行"><a href="#nssm-开机启动-amp-后台运行" class="headerlink" title="nssm 开机启动&amp;后台运行"></a>nssm 开机启动&amp;后台运行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nssm install natapp # 安装服务</div><div class="line">nssm edit natapp # 编辑服务器名</div><div class="line">nssm restart natapp # 重启natapp服务</div><div class="line">nssm remove natapp # 删除XX服务</div></pre></td></tr></table></figure>
+<p><img src="/view/img/nssm-edit.jpg" alt="nssm 开机启动&amp;后台运行"><br><img src="/view/img/background-list.jpg" alt="自定义服务"></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><p>window 执行exe</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.\n</div></pre></td></tr></table></figure>
+</li>
+<li><p>https 加密文件</p>
+<blockquote>
+<p>这两块必须要有的，可以到阿里云去申请。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssl_certificate      https/214009859140175.pem; # ssl 加密文件</div><div class="line">ssl_certificate_key  https/214009859140175.key; # ssl 加密文件</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p><a href="https://www.aliyun.com" target="_blank" rel="external">阿里云</a>【管理控制台】下【证书服务】</p>
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://natapp.cn" target="_blank" rel="external">natapp</a></li>
+<li><a href="https://natapp.cn/article/https" target="_blank" rel="external">支持https泛域名以及本地(443端口)证书,支持http/2协议</a></li>
+<li><p><a href="https://natapp.cn/article/windows_service" target="_blank" rel="external">Natapp(Ngrok) Windows下注册为服务,开机启动&amp;后台运行</a></p>
+</li>
+<li><p><a href="http://nssm.cc/usage" target="_blank" rel="external">nssm 用法</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/05/windows nginx natapp/" data-id="cizwrxbic0000hgddq4j2jcge" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/21/git/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Git 常用命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/17/node.js 模块之 pm2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">node.js 模块之 pm2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js-规范/">node.js, 规范</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/node-js-规范/" style="font-size: 10px;">node.js, 规范</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Arkiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Siste innlegg</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/23/webstorm/">webstorm 优化</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/21/npm/">npm 常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/21/git/">Git 常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/05/windows nginx natapp/">windows nginx natapp</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/17/node.js 模块之 pm2/">node.js 模块之 pm2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 yanm1ng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

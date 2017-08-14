@@ -6,7 +6,7 @@
 title: 云飞扬 - 个人博客
 subtitle:
 description:
-author: coolshaw
+author: shaw
 language:
 timezone:
 
@@ -16,6 +16,13 @@ url: http://blog.yxxit.com
 root: /view/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
+
+menu:
+ Home: /
+ Tags: /tags/
+ Archives: /archives/
+ Projects: /project/
+ About: /about/
 
 # Directory
 source_dir: source
@@ -63,7 +70,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: vexo
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
