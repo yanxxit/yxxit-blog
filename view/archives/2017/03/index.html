@@ -10,7 +10,7 @@
   
   <title>
     
-      Tags | 云飞扬 - 个人博客
+      云飞扬 - 个人博客
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -108,42 +108,90 @@
 </header>
 
     <div id="article-banner">
-  <h2>Tags</h2>
-  <p class="post-date">标签检索</p>
+  <h2>Archives</h2>
+  <p class="post-date">文章归档</p>
 </div>
-<main class="app-body">
-  <div id="tag-cloud">
+<main class="app-body" id="archives">
+  
+  
+  
+    <section class="time-section">
+  <h1 class="section-year">
+    2017
+  </h1>
+  <div class="section-list">
     
-      <a class="tag3" data-name="tag-node.js, 规范">node.js, 规范</a>
+    
+      <div class="section-list-item">
+        <a href="/view/2017/08/15/hello-world/" class="archive-title">Hello World</a>
+        <p class="archive-date">08-15</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/view/2017/03/23/webstorm/" class="archive-title">webstorm 优化</a>
+        <p class="archive-date">03-23</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/view/2017/03/21/npm/" class="archive-title">npm 常用命令</a>
+        <p class="archive-date">03-21</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/view/2017/03/21/git/" class="archive-title">Git 常用命令</a>
+        <p class="archive-date">03-21</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/view/2017/03/05/windows nginx natapp/" class="archive-title">windows nginx natapp</a>
+        <p class="archive-date">03-05</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/view/2017/02/17/node.js 模块之 pm2/" class="archive-title">node.js 模块之 pm2</a>
+        <p class="archive-date">02-17</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/view/2017/02/16/node.js 6.9.4 升级/" class="archive-title">node.js 6.9.4 升级</a>
+        <p class="archive-date">02-16</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/view/2017/02/10/tool/常用工具/" class="archive-title">开发常用工具</a>
+        <p class="archive-date">02-10</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/view/2017/02/09/node.js下用window.onerror捕获并上报Js错误/" class="archive-title">node.js下用window.onerror捕获并上报Js错误</a>
+        <p class="archive-date">02-09</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/view/2017/01/22/Spring.boot 项目创建之傻瓜教程/" class="archive-title">Spring.boot 项目创建之傻瓜教程</a>
+        <p class="archive-date">01-22</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/view/2017/01/19/es5/" class="archive-title">ES5 新增特性汇总</a>
+        <p class="archive-date">01-19</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/view/2017/01/19/nodejs开发规范/" class="archive-title">node.js 开发规范</a>
+        <p class="archive-date">01-19</p>
+      </div>
     
   </div>
+</section>
   
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-node.js, 规范">node.js, 规范</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/view/2017/01/19/nodejs开发规范/">node.js 开发规范</a>
-          </li>
-        </ul>
-        
-    </div>
-    
 </main>
 
 <script>
   (function () {
-    var url = 'http://github.yxxit.com/tags/index.html'
-    $('#article-banner').geopattern(url)
-    $('.header').removeClass('fixed-header')
-
-    var tag = location.hash.replace('#', '')
-    if (tag) {
-      var tagId = "#tag-" + tag;
-      $("html, body").animate({
-        scrollTop: $(tagId).offset().top 
-      }, 400)
-    }
+    var url = 'http://github.yxxit.com/archives/2017/03/index.html';
+    $('#article-banner').geopattern(url);
+    $('.header').removeClass('fixed-header');
   })();
 </script>
     <div class="scroll-top">
