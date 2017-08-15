@@ -1,7 +1,8 @@
 ---
 title: ES5 新增特性汇总
 ---
-```
+
+> ES5 新增特性汇总
 
 - Trailing commas are ok
 多余的逗号不报错，比如 {a:1,b:2,}
@@ -53,6 +54,7 @@ Object.isExtensible()
 
 - 'use strict';
 - Strict Mode:
+```text
   No more implied global variables within functions.
   this is not bound to the global object by function form.
   apply and call do not default to the global object.
@@ -65,6 +67,7 @@ Object.isExtensible()
   No more arguments.caller or arguments.callee.
   No more octal literals.
   Duplicate names in an object literal or function parameters are a syntax error
+```
 
 严格模式
 函数里没有隐式的全局变量了，你要创建全局变量必须是显式的。比如想用 a = 1 创建全局变量是不行的。
@@ -74,7 +77,7 @@ call 和 apply 也不会默认使用全局对象了。
 如果一个属性的 writeable 是 false，那么你给这个属性赋值就会报错。
 如果一个属性的 configurable 是 false，那么你 delete 这个属性就会报错。
 对 eval 和 arguments 做出了限制。以下代码每行都会报错：
-
+```js
   eval = 17;
   arguments++;
   ++eval;
@@ -85,11 +88,13 @@ call 和 apply 也不会默认使用全局对象了。
   function arguments() { }
   var y = function eval() { };
   var f = new Function("arguments", "'use strict'; return 17;");
+```
+
 arguments 只保存原始参数。对形参的赋值不会对 arguments 有影响。
 不准用 arguments.caller 和 arguments.callee
 不支持八进制字面量，比如 var a = 015 会报错。
 对象字面量或者函数形参中，如果有重复的名字，就会报错。
-```
+
 
 ## 参考
 - [转载](https://zhuanlan.zhihu.com/p/24336831)
