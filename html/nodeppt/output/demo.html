@@ -1,0 +1,198 @@
+<!--
+    Powered By nodeppt - This is probably the best web presentation tool so far!
+    version: 1.4.5
+    site: https://github.com/ksky521/nodeppt
+    date: 
+-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>nodeppt markdown 演示 - By Theo Wang</title>
+    <link rel="stylesheet" media="all" href="./css/nodeppt.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./css/phone.css">
+    
+    <link rel="stylesheet" href="./js/highlight/styles/monokai_sublime.css">
+    <link rel="stylesheet" href="./css/font-awesome.css">
+    
+<link rel="stylesheet" href="./css/theme.moon.css">
+</head>
+<body>
+<div class="slides">
+    <slides id="container">
+        <slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>node.js 开发入门详解</h1>
+<h2>常用命令</h2>
+<ol>
+<li>按键 O ，缩略图</li>
+<li>按键 P , 画笔</li>
+<li>按键 C ，清空</li>
+<li>按键字体粗细1234</li>
+<li>设置颜色：r,b,</li>
+</ol>
+
+</article></section></slide>
+<slide class="slide fill" style="background-image:url('./img/bg1.png')"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>背景图片</h1>
+<h2>使用方法：&#91;slide style=&quot;background-image:url(&#39;/img/bg1.png&#39;)&quot;&#93;</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>主页面样式</h2>
+<h3>----是上下分界线</h3>
+
+</hgroup><article>
+
+<p>nodeppt是基于nodejs写的支持 <strong>Markdown!</strong> 语法的网页PPT</p>
+<p>nodeppt：<a href="https://github.com/ksky521/nodePPT" target="_blank">https://github.com/ksky521/nodePPT</a></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p>什么？这些功能还不够用？</p>
+<p>极客模式：查看源码的nodeppt.js，相信你会找到牛逼的手机互动（摇一摇换页）功能</p>
+<p>查看项目目录ppts获取更多帮助信息</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>尝试调用js</h2>
+<button onclick="demoAlert">点击我有惊喜哦</button>
+</article></section></slide>
+<slide class="slide fill" style="background-image:url('./img/bg1.png')"><section class="slide-wrapper"><article class="fadeIn">
+<h2>设置背景图片</h2>
+<ul class="fadeIn">
+<li>查看代码</li>
+</ul>
+<pre><code>var temp = {};
+temp.show = function(){
+    console.log(&#39;打印结果&#39;);
+}
+</code></pre>
+<ol class="moveIn">
+<li>使用md文件进行书写</li>
+<li>md文件各种支持性越来越多了</li>
+<li>nodeppt sublime插件 静态博客</li>
+<li>只是针对与列表</li>
+<li>列表显示才会有</li>
+<li>图片后面的转换命令还是必须有的，否则不会起到作用</li>
+</ol>
+
+</article></section></slide>
+<slide class="slide" style=background-color:blue><section class="slide-wrapper"><article>
+<ul>
+<li>上下左右方向键翻页<ul class="moveIn">
+<li>列表支持渐显动画</li>
+<li>支持多级列表</li>
+<li>这个动画是moveIn</li>
+</ul>
+</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide" data-transition="vertical3d"><section class="slide-wrapper"><article>
+<h2>这是一个vertical3d的动画</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>显示代码</h2>
+<div class="file-setting">
+    <p>这是html</p>
+</div><p><p id="css-demo">这是css样式</p></p>
+<p>具体看下项目中 ppts/demo.md 代码</p>
+<script>
+    function testScriptTag(){
+
+    }
+    console.log(typeof testScriptTag);
+</script><style>
+#css-demo{
+    color: red;
+}
+</style>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>项目总结</h2>
+<ol class="bounceIn">
+<li>一个PPT只需要写一个md文档就可以了</li>
+<li>一个nodeppt 可以调用本机的自定义图片</li>
+<li>需要将PPT打包，生成静态网页</li>
+<li>由于转换成了网页，所以支持网页的很多特性</li>
+<li>nodeppt 支持键盘自定义时间，别如说切换</li>
+<li>nodeppt 支持js自定义方法</li>
+</ol>
+
+</article></section></slide>
+        
+
+        <!-- <slide class="slide logoslide dark nobackground">
+            <article class="flexbox vcenter">
+                <h2 style="color: white;">Powered By nodeppt v1.4.5</h2>
+            </article>
+        </slide> -->
+        <div class="slideTip" id="tip"></div>
+    </slides>
+</div>
+<canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
+<div class="progress"><span id="progress"></span></div>
+<div id="_buttons">
+    <div class="_btn-box" id="_btn-box" style="display:none;">
+        <button class="fa fa-arrow-circle-left" id="_btn-prev"></button>
+        <button class="fa fa-arrow-circle-right" id="_btn-next"></button>
+        <button class="fa fa-paint-brush" id="_btn-brush"></button>
+        <button class="fa fa-compress" id="_btn-overview" data-toggle="fa fa-expand"></button>
+    </div>
+    <button class="fa fa-bars" id="_btn-bar"  data-toggle="fa fa-close"></button>
+</div>
+<script src="./js/mixjs/lib/mix.0.3.0.min.js"></script>
+<script>
+    var ASSET_RELATIVE_DIR = ".";
+</script>
+<script>
+var base = location.protocol + '//' + location.host;
+
+var path = (location.pathname + '#').split('/').filter(function(v){
+    return !!v;
+});
+path.pop();
+path = path.join('/');
+if (typeof ASSET_RELATIVE_DIR === 'string') {
+    path = path + '/' + ASSET_RELATIVE_DIR;
+}
+MixJS.config({
+    baseURL: [ base, path, 'js'].join('/')+'/'
+});
+
+</script>
+<script src="./js/mixjs/lib/event/broadcast.js"></script>
+<script src="./js/nodeppt.js"></script>
+<script>
+Slide.init({
+    containerID: 'container',
+    drawBoardID: 'drawBoard',
+    slideClass: '.slide',
+    buildClass: '.build',
+    progressID: 'progress',
+    transition: 'zoomin',
+    width: 1100,
+    dir: './',
+    
+    //打开下面的注释就开启postMessage方式
+    //访问网址127.0.0.1:8080/ppt/demo#client
+    control:{
+        type: 'postMessage',
+        args:{
+            isControl:  false
+        }
+    },
+    
+    tipID: 'tip'
+});
+MixJS.loadJS('highlight/highlight.pack.js',function(){
+    hljs.tabReplace = '  ';
+    hljs.initHighlightingOnLoad();
+});
+</script>
+<script src="./js/demo.js"></script>
+
+<!--placeholder-->
+</body>
+</html>
