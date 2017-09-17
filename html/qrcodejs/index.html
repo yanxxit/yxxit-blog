@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="email=no"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+    <title>生成二维码</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./qrcode.min.js"></script>
+    <style>
+        body {
+            /*text-align: center;*/
+        }
+
+        #qrcode {
+            /*margin-left: 45%;*/
+            margin-top: 5%;
+        }
+    </style>
+</head>
+<body>
+<input id="text" type="text" value="http://www.yxxit.com/show" style="width:60%"/>
+<button id="btnMarkCode">生成二维码</button>
+<div id="qrcode"></div>
+
+</body>
+</html>
+<script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        width: 200,
+        height: 200,
+        colorDark: "red",//前景色
+        colorLight: "#ffffff",//北京
+        correctLevel: QRCode.CorrectLevel.H
+    });
+    qrcode.makeCode($('#text').val());
+    $('#btnMarkCode').click(function () {
+        var elText = $('#text').val();
+        if (elText == undefined || elText == '') {
+            alert("请输入内容");
+            $('#text').focus();
+        } else {
+            qrcode.makeCode(elText);
+        }
+    });
+
+</script>
