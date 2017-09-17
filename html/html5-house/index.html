@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>一套理想居室的自我修养</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<!--<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'/>-->
+<script type="text/javascript">
+		var phoneWidth = parseInt(window.screen.width);
+		var phoneScale = phoneWidth/640;
+		var ua = navigator.userAgent;
+		if (/Android (\d+\.\d+)/.test(ua)){
+			var version = parseFloat(RegExp.$1);
+			// andriod 2.3
+			if(version>2.3){
+				document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+			// andriod 2.3以上
+			}else{
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+			}
+			// 其他系统
+		} else {
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+		}
+</script>
+<link rel="stylesheet" href="./css/custom.css" />
+<link rel="stylesheet" href="./css/cr.css" />
+</head>
+
+<body>
+<div id="loadDiv">
+  <div class="loading_bj">
+    <span id="loginnum" class="fh b f24"></span>
+  </div>
+  <div class="loading_txt">
+  	<p class="syp_1 f24 sywz">如果你还没有安家落户，<br>那绝不能马虎。</p>
+    <p class="syp_2 f24 sywz">我很认真的写下自己的全部，<br>是为了让你在成家立业之际：</p>
+    <p class="syp_3 f24 sywz">多一些眉目，<br>少一些弯路。</p>
+  </div>
+</div>
+<div class="zb" style="display:none;">
+  <p> 坐标: (beta=<span id="beta" class="value">null</span>, gamma=<span id="gamma" class="value">null</span>, alpha=<span id="alpha" class="value">null</span>,</p>
+  <p>滚动背景值=<span id="lefts">null</span>,屏幕宽=<span id="bjk">null</span>,移动屏幕比=<span id="pmb">null</span>,开关=<span id="open">null</span>,</p>
+</div>
+<div class="tankuang" style="position:fixed; width:100%; height:100%; background:url(./images/zy.png) center center no-repeat rgba(0,0,0,0.8); z-index:9999; top:0px; left:0px; display:none;"></div>
+<div class="bj_box" style="display:none;">
+  <div class="bj">
+    <div class="page1">
+    	<div class="page1_1 page_dn"><a href="./page1.shtml" class="lianj" title="园林"><span></span></a></div>
+        <div class="page1_2 page_dn"></div>
+        <div class="page1_3 page_dn"></div>
+        <div class="page1_4 page_dn"></div>
+        <div class="page1_51 page_dn"></div>
+        <div class="page1_52 page_dn"></div>
+        <div class="page1_53 page_dn"></div>
+        <div class="page1_54 page_dn"></div>
+        <div class="page1_55 page_dn"></div>
+    </div>
+    <div class="page2">
+    	<div class="page2_1 page_dn"><a href="./page2.shtml" class="lianj" title="区位"><span></span></a></div>
+        <div class="page2_2 page_dn"></div>
+        <div class="page2_3 page_dn"></div>
+        <div class="page2_41 page_dn"></div>
+        <div class="page2_42 page_dn"></div>
+        <div class="page2_43 page_dn"></div>
+        <div class="page2_44 page_dn"></div>
+        <div class="page2_45"></div>
+        <div class="page2_5 page_dn"></div>
+        <div class="page2_6 page_dn"></div>
+    </div>
+    <div class="page3">
+    	<div class="page3_2">
+        	<div class="page3_3"></div>
+            <div class="page3_4">
+                <div class="page3_4_5">
+                	<div class="page3_4_left"></div>
+                    <div class="page3_4_right"></div>
+                </div>
+            	<div class="page3_4_1"></div>
+                <div class="page3_4_2"></div>
+                <div class="page3_4_3"></div>
+                <div class="page3_4_4"></div>
+            </div>
+        </div>
+    </div>
+    <div class="page4">
+    	<div class="page4_1 page_dn"><a href="./page3.shtml" class="lianj" title="配套"><span></span></a></div>
+        <div class="page4_2 page_dn"></div>
+        <div class="page4_3 page_dn"></div>
+        <div class="page4_4 page_dn"></div>
+        <div class="page4_5 page_dn"></div>
+        <div class="page4_61 page_dn"></div>
+        <div class="page4_62 page_dn"></div>
+        <div class="page4_63 page_dn"></div>
+        <div class="page4_64 page_dn"></div>
+    </div>
+    <div class="page5">
+        <div class="page5_32 page_dn">
+        	<div class="page5_33"></div>
+            <div class="page5_34"></div>
+        </div>
+    	<div class="page5_1 page_dn"><a href="./page4.shtml" class="lianj" title="户型"><span></span></a></div>
+        <div class="page5_2 page_dn"></div>
+        <div class="page5_31 page_dn"></div>
+        <div class="page5_41 page_dn"></div>
+        <div class="page5_42 page_dn"></div>
+        <div class="page5_43 page_dn"></div>
+        <div class="page5_44 page_dn"></div>
+        <div class="page5_45 page_dn"></div>
+    </div>
+  </div>
+  <div class="bottom_box">
+    <p class="bl_line"></p>
+    <p class="br_line"></p>
+    <p class="b_yuan"></p>
+    <p class="b_yuan_t f20 black2 fw">左右倾斜手机</p>
+    <p class="bl_yuan"></p>
+    <p class="br_yuan"></p>
+  </div>
+</div>
+
+<script src="./js/jquery-1.8.2.min.js"></script>
+<script src="./js/jquery.easing.1.3.js"></script>
+<script src="./js/loading.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/share.js"></script>
+<div style="display:none;">
+<!-- <script src="http://lido2046.com/stat/mystat.asp?siteid=1"></script> -->
+<script type="text/javascript">
+// var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+// document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F81b700225f678299b9e071a0454b014f' type='text/javascript'%3E%3C/script%3E"));
+// </script>
+// <!--Matrix:End-->
+// <script type="text/javascript">
+// var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+// document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F955de4db8bf9c353c45a4ca7c0151307' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div>
+
+<audio id="a1" autoplay loop src="./mp3/bg.mp3"></audio>
+<div id="btn-a1">
+	<p class="kais" style="display:none;">开始</p>
+	<p class="2">结束</p>
+</div>
+<script>
+	var audio=document.getElementById('a1');
+	$('#btn-a1').on('click',function(ev){
+		if(audio.paused){
+			audio.play();
+			$(".kais").stop().fadeOut(0);
+			$(".2").stop().fadeIn(0);
+		}else{
+			audio.pause();
+			$(".2").stop().fadeOut(0);
+			$(".kais").stop().fadeIn(0);
+		}
+	});		
+	$(document).one('touchstart', function(){
+		audio.play();
+	});
+</script>
+</body>
+</html>
