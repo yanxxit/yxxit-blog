@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时间转换</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .content {
+            width: 100%;
+        }
+
+        #old {
+            width: 70%;
+            margin-left: 15%;
+            height: 200px;
+            border: 1px solid #000
+        }
+
+        #new {
+            width: 70%;
+            margin-left: 15%;
+            height: 200px;
+            border: 1px solid #000
+        }
+
+        .btnTran {
+            display: block;
+            border: 1px solid #000;
+            border-radius: 3px;
+            line-height: 30px;
+            height: 30px;
+            margin: 20px;
+            width: 30%;
+            margin-left: 35%;
+            background-color: green;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div contenteditable="true" id="old">
+
+    </div>
+    <a href="javascript:;" class="btnTran">转换</a>
+    <div contenteditable="true" id="new">
+
+    </div>
+</div>
+</body>
+</html>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/moment.js/2.18.1/moment.min.js"></script>
+<script>
+    $('.btnTran').click(function () {
+        var old = $('#old').text();
+        $("#new").text(moment(old).format("YYYY-MM-DD HH:mm:ss"));
+    });
+</script>
