@@ -3373,7 +3373,7 @@ var Gitment = function () {
 
     this.useTheme(this.theme);
 
-    var user = {};
+    var user = {html_url:"https://github.com/shawflying/yxxit-blog/issues"};
     try {
       var userInfo = localStorage.getItem(_constants.LS_USER_KEY);
       if (this.accessToken && userInfo) {
@@ -3388,7 +3388,7 @@ var Gitment = function () {
     this.state = (0, _mobx.observable)({
       user: user,
       error: null,
-      meta: {},
+      meta: {html_url:"https://github.com/shawflying/yxxit-blog/issues"},
       comments: undefined,
       reactions: [],
       commentReactions: {},
