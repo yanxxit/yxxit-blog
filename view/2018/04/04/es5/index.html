@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="yanm1ng&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/view/css/images/logo.png">
+  
+  <title>
+    
+      ES5 新增特性汇总 | 云飞扬 - 个人博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/view/css/style.css">
+<link rel="stylesheet" href="/view/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/view/js/qrious.js"></script>
+<script src="/view/js/gitment.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/view/">
+      <div class="logo"></div>
+      <span>云飞扬 - 个人博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/view/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/view/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/view/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/view/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/view/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/view/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/view/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/view/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/view/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/view/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>ES5 新增特性汇总</h2>
+  <p class="post-date">2018-04-04</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body">
+  <article class="post-article">
+    <section class="markdown-content"><blockquote>
+<p>ES5 新增特性汇总</p>
+</blockquote>
+<ul>
+<li><p>Trailing commas are ok<br>多余的逗号不报错，比如 {a:1,b:2,}</p>
+</li>
+<li><p>No reserved words for property names<br>属性名可以使用关键字和保留字了，比如 { if:1, else:2 }</p>
+</li>
+<li><p>NaN, Infinity, undefined : are all constants<br>NaN、Infinity、undefined 都是常量了，不可更改。</p>
+</li>
+<li><p>parseInt() defaults to radix 10<br>parseInt 第二个参数默认为 10（真好）</p>
+</li>
+<li><p>/regexp/ produces new reg ex object every time<br>正则字面量每次都会产生一个新的对象</p>
+</li>
+<li><p>JSON.parse(), JSON.stringify()<br>添加 JSON 序列化和反序列化</p>
+</li>
+<li><p>Function.prototype.bind<br>函数新增 bind 方法（贺老说 bind 写在后面有点不好用）</p>
+</li>
+<li><p>String.prototype.trim<br>字符串终于自带头尾去空格方法了，如 ‘ abc ‘.trim() === ‘abc’</p>
+</li>
+<li><p>Array.prototype.every, filter, forEach, indexOf, lastIndexOf, map, reduce, reduceRight, some<br>数组添加了一系列方法，终于能脱离 Underscore.js 了</p>
+</li>
+<li><p>Date.now()<br>Date.now 现在才加进来的？可怕。</p>
+</li>
+<li><p>Date.prototype.toISOString<br>日期新增 toISOString 方法</p>
+</li>
+<li><p>new Date(string) and Date.parse(string) will try ISO format 1st<br>新增对 ISO 日期格式的支持</p>
+</li>
+<li><p>Array.isArray()<br>判断一个对象是不是数组……以前苦了大家了</p>
+</li>
+<li><p>Object.keys(), Object.create(), Object.defineProperty, Object.defineProperties,<br>Object.getOwnPropertyDescriptor(), Object.getOwnPropertyNames(obj), Object.getPrototypeOf(obj)</p>
+</li>
+<li><p>Object.seal(), Object.freeze(), Object.preventExtensions(), Object.isSealed(), Object.isFrozen(),<br>Object.isExtensible()<br>对象新增一系列方法，使得在 JS 中模拟 Java 变得更丝滑。我最喜欢的还是 Object.create()</p>
+</li>
+<li><p>Property attributes: writeable, value, enumerable, configurable, get, set<br>对象的属性可以添加各种配置了</p>
+</li>
+<li><p>‘use strict’;</p>
+</li>
+<li>Strict Mode:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">No more implied global variables within functions.</span><br><span class="line">this is not bound to the global object by function form.</span><br><span class="line">apply and call do not default to the global object.</span><br><span class="line">No with statement.</span><br><span class="line">Setting a writeable: false property will throw.</span><br><span class="line">Deleting a configurable: false property will throw.</span><br><span class="line">Restrictions on eval.</span><br><span class="line">eval and arguments are reserved.</span><br><span class="line">arguments not linked to parameters.</span><br><span class="line">No more arguments.caller or arguments.callee.</span><br><span class="line">No more octal literals.</span><br><span class="line">Duplicate names in an object literal or function parameters are a syntax error</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>严格模式<br>函数里没有隐式的全局变量了，你要创建全局变量必须是显式的。比如想用 a = 1 创建全局变量是不行的。<br>this 不会默认指向全局对象（比如 window 或者 global）了。<br>call 和 apply 也不会默认使用全局对象了。<br>不准用 with<br>如果一个属性的 writeable 是 false，那么你给这个属性赋值就会报错。<br>如果一个属性的 configurable 是 false，那么你 delete 这个属性就会报错。<br>对 eval 和 arguments 做出了限制。以下代码每行都会报错：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> = <span class="number">17</span>;</span><br><span class="line"><span class="built_in">arguments</span>++;</span><br><span class="line">++<span class="built_in">eval</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123; set p(<span class="built_in">arguments</span>) &#123; &#125; &#125;;</span><br><span class="line"><span class="keyword">var</span> <span class="built_in">eval</span>;</span><br><span class="line"><span class="keyword">try</span> &#123; &#125; <span class="keyword">catch</span> (<span class="built_in">arguments</span>) &#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">x</span>(<span class="params">eval</span>) </span>&#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">arguments</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line"><span class="keyword">var</span> y = <span class="function"><span class="keyword">function</span> <span class="title">eval</span>(<span class="params"></span>) </span>&#123; &#125;;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"arguments"</span>, <span class="string">"'use strict'; return 17;"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>arguments 只保存原始参数。对形参的赋值不会对 arguments 有影响。<br>不准用 arguments.caller 和 arguments.callee<br>不支持八进制字面量，比如 var a = 015 会报错。<br>对象字面量或者函数形参中，如果有重复的名字，就会报错。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/24336831" target="_blank" rel="noopener">转载</a></li>
+</ul>
+</section>
+    
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    <div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>
+    
+      <div id="comments"></div>
+    
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'http://github.yxxit.com/2018/04/04/es5/';
+    var banner = 'undefined'
+    if (banner) {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      var imageW = $(this).width()
+      var imageH = $(this).height()
+      
+      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+      zoom = zoom < 1 ? 1 : zoom
+      zoom = zoom > 2 ? 2 : zoom
+      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+      $('.image-view-wrap').addClass('wrap-active')
+      $('.image-view-wrap img').css({
+        'width': `${imageW}`,
+        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+      })
+      $('html').css('overflow', 'hidden')
+
+      $('.image-view-wrap').on('click', function() {
+        $(this).remove()
+        $('html').attr('style', '')
+      })
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "shawflying";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "ES5 新增特性汇总",
+        owner: "shawflying",
+        repo: "yxxit-blog",
+        oauth: {
+          client_id: "66cdd646a4b3f9468cee",
+          client_secret: "01ada0c8f17bec5d1a9766575b60996cbc05a2a7"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/view/js/script.js"></script>
+  </body>
+</html>

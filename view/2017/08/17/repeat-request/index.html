@@ -116,11 +116,11 @@
 </div>
 <main class="app-body">
   <article class="post-article">
-    <section class="markdown-content"><h2 id="分析产生重复请求的原因"><a href="#分析产生重复请求的原因" class="headerlink" title="分析产生重复请求的原因"></a>分析产生重复请求的原因</h2><h3 id="一、-前端js-未做限制-每点击一次就会请求一次"><a href="#一、-前端js-未做限制-每点击一次就会请求一次" class="headerlink" title="一、 前端js 未做限制 每点击一次就会请求一次"></a>一、 前端js 未做限制 每点击一次就会请求一次</h3><h3 id="二、-jQuery-或者-vue-js-等重复-加载初始化方法，将用户点击事件累加"><a href="#二、-jQuery-或者-vue-js-等重复-加载初始化方法，将用户点击事件累加" class="headerlink" title="二、 jQuery 或者 vue.js 等重复 加载初始化方法，将用户点击事件累加"></a>二、 jQuery 或者 vue.js 等重复 加载初始化方法，将用户点击事件累加</h3><p>加载了三遍，点击btn事件了，其内部方法将会被触发3次<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	$(<span class="string">'#btn'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">//请求事件</span></div><div class="line">	&#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">init();</div><div class="line">init();</div><div class="line">init();</div></pre></td></tr></table></figure></p>
+    <section class="markdown-content"><h2 id="分析产生重复请求的原因"><a href="#分析产生重复请求的原因" class="headerlink" title="分析产生重复请求的原因"></a>分析产生重复请求的原因</h2><h3 id="一、-前端js-未做限制-每点击一次就会请求一次"><a href="#一、-前端js-未做限制-每点击一次就会请求一次" class="headerlink" title="一、 前端js 未做限制 每点击一次就会请求一次"></a>一、 前端js 未做限制 每点击一次就会请求一次</h3><h3 id="二、-jQuery-或者-vue-js-等重复-加载初始化方法，将用户点击事件累加"><a href="#二、-jQuery-或者-vue-js-等重复-加载初始化方法，将用户点击事件累加" class="headerlink" title="二、 jQuery 或者 vue.js 等重复 加载初始化方法，将用户点击事件累加"></a>二、 jQuery 或者 vue.js 等重复 加载初始化方法，将用户点击事件累加</h3><p>加载了三遍，点击btn事件了，其内部方法将会被触发3次<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	$(<span class="string">'#btn'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="comment">//请求事件</span></span><br><span class="line">	&#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">init();</span><br><span class="line">init();</span><br><span class="line">init();</span><br></pre></td></tr></table></figure></p>
 <h3 id="三、-jquery-本身处理有一定的延时性（时间极短）"><a href="#三、-jquery-本身处理有一定的延时性（时间极短）" class="headerlink" title="三、 jquery 本身处理有一定的延时性（时间极短）"></a>三、 jquery 本身处理有一定的延时性（时间极短）</h3><ol>
 <li>使用原生js，能够实时响应。设置isAllowSubmit为true,第一遍请求时，设置为false,在ajax未响应时，下面的点击事件是无发<br>重复调用ajax请求的。</li>
 </ol>
-<p>```js</p>
+<p><code>`</code>js</p>
 <p>var GiveEntity = {};<br>var isAllowSubmit = true;</p>
 <p>GiveEntity.submit = function (isShare) {<br>    if (isAllowSubmit) {<br>        isAllowSubmit = false;<br>        $(‘#btnConfirm’).unbind(‘click’).html(‘loading…’);</p>
 <pre><code>    $.post(&apos;/&apos; + app + &apos;/create/record&apos;, params, function (data) {
@@ -256,7 +256,7 @@
 </div>
     <footer class="app-footer">
   <p class="copyright">
-    &copy; 2017 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
     <br>
     Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
   </p>

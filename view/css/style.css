@@ -1,8 +1,4 @@
-@font-face {
-  font-family: 'Source Sans Pro';
-  src: url("../fonts/SourceSansPro.ttf");
-}
-::selection {
+@font-face::selection {
   background: #42b983;
   color: #fff;
 }
@@ -351,10 +347,10 @@ h2.article-head {
   }
 }
 .logo {
-  background: url("./images/logo.png");
+  background: url("./images/logo.png") no-repeat;
   background-size: contain;
   width: 40px;
-  height: 40px;
+  height: 30px;
   margin-right: 10px;
 }
 .home-link {
