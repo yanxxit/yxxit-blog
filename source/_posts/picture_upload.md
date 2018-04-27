@@ -1,7 +1,7 @@
 ---
 title: 图片上传
 date: 2018-04-04 11:11:11
-tags: picture upload
+tags: upload
 ---
 
 前端浏览器获取图片信息，上传到服务器上。

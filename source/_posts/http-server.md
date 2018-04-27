@@ -2,7 +2,7 @@
 layout: post
 title: http-server
 date: 2017-08-15 22:51:10
-tags:
+tags: node-tools
 ---
 
 > http-server 是一个简单的零配置命令行HTTP服务器, 基于 nodeJs.

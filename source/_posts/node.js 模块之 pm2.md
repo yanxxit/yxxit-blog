@@ -1,5 +1,6 @@
 ---
 title: node.js 模块之 pm2
+tags: node-tools
 ---
 
 ## pm2 简介

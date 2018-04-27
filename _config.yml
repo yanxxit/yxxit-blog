@@ -17,12 +17,19 @@ root: /view
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
+# 菜单
 menu:
  Home: /
  Tags: /tags/
  Archives: /archives/
  Projects: /project/
  About: /about/
+
+# 关于页面
+about: 
+  banner: /view/img/webp/about.webp
+  avatar: /view/img/webp/header.webp
+  description: The end is always near.
 
 # Directory
 source_dir: source
@@ -82,3 +89,4 @@ deploy:
   type: git
   repo: https://github.com/shawflying/yxxit-blog.git
   branch: master
+

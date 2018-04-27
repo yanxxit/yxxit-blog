@@ -1,5 +1,6 @@
 ---
 title: npm 常用命令
+tags: node-tools
 ---
 
 ## 简介NPM(Node Package Manger)

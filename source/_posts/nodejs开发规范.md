@@ -1,7 +1,7 @@
 ---
 title: node.js 开发规范
 date: 2017-01-19 19:56:53
-tags: node.js, 规范
+tags: node.js
 ---
 
 ## 命名规范

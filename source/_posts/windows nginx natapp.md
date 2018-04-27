@@ -1,5 +1,6 @@
 ---
 title: windows nginx natapp
+tags: tools
 ---
 
 ## 实现目标

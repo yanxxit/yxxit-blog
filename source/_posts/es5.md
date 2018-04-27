@@ -1,5 +1,8 @@
 ---
+layout: post
 title: ES5 新增特性汇总
+date: 2017-09-14 18:10:11
+tags: node.js
 ---
 
 > ES5 新增特性汇总
