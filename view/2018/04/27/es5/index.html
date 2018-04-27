@@ -10,7 +10,7 @@
   
   <title>
     
-      nodeppt | 云飞扬 - 个人博客
+      ES5 新增特性汇总 | 云飞扬 - 个人博客
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -108,37 +108,61 @@
 </header>
 
     <div id="article-banner">
-  <h2>nodeppt</h2>
-  <p class="post-date">2017-08-15</p>
+  <h2>ES5 新增特性汇总</h2>
+  <p class="post-date">2018-04-27</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
 </div>
 <main class="app-body">
   <article class="post-article">
-    <section class="markdown-content"><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nodeppt</span><br></pre></td></tr></table></figure>
-<h2 id="如何使用nodeapp"><a href="#如何使用nodeapp" class="headerlink" title="如何使用nodeapp"></a>如何使用nodeapp</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeppt start -p 8899 -d demo/</span><br></pre></td></tr></table></figure>
-<h2 id="生成html文件"><a href="#生成html文件" class="headerlink" title="生成html文件"></a>生成html文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeppt generate demo/ output -a</span><br></pre></td></tr></table></figure>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ol>
-<li>按键 O ，缩略图</li>
-<li>按键 P , 画笔</li>
-<li>按键 C ，清空</li>
-<li>按键字体粗细1234</li>
-<li>设置颜色：r,b,</li>
-</ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://www.npmjs.com/package/nodeppt" target="_blank" rel="noopener">nodeppt</a></li>
-</ol>
+    <section class="markdown-content"><blockquote>
+<p>ES5 新增特性汇总</p>
+</blockquote>
+<ul>
+<li><p>Trailing commas are ok<br>多余的逗号不报错，比如 {a:1,b:2,}</p>
+</li>
+<li><p>No reserved words for property names<br>属性名可以使用关键字和保留字了，比如 { if:1, else:2 }</p>
+</li>
+<li><p>NaN, Infinity, undefined : are all constants<br>NaN、Infinity、undefined 都是常量了，不可更改。</p>
+</li>
+<li><p>parseInt() defaults to radix 10<br>parseInt 第二个参数默认为 10（真好）</p>
+</li>
+<li><p>/regexp/ produces new reg ex object every time<br>正则字面量每次都会产生一个新的对象</p>
+</li>
+<li><p>JSON.parse(), JSON.stringify()<br>添加 JSON 序列化和反序列化</p>
+</li>
+<li><p>Function.prototype.bind<br>函数新增 bind 方法（贺老说 bind 写在后面有点不好用）</p>
+</li>
+<li><p>String.prototype.trim<br>字符串终于自带头尾去空格方法了，如 ‘ abc ‘.trim() === ‘abc’</p>
+</li>
+<li><p>Array.prototype.every, filter, forEach, indexOf, lastIndexOf, map, reduce, reduceRight, some<br>数组添加了一系列方法，终于能脱离 Underscore.js 了</p>
+</li>
+<li><p>Date.now()<br>Date.now 现在才加进来的？可怕。</p>
+</li>
+<li><p>Date.prototype.toISOString<br>日期新增 toISOString 方法</p>
+</li>
+<li><p>new Date(string) and Date.parse(string) will try ISO format 1st<br>新增对 ISO 日期格式的支持</p>
+</li>
+<li><p>Array.isArray()<br>判断一个对象是不是数组……以前苦了大家了</p>
+</li>
+<li><p>Object.keys(), Object.create(), Object.defineProperty, Object.defineProperties,<br>Object.getOwnPropertyDescriptor(), Object.getOwnPropertyNames(obj), Object.getPrototypeOf(obj)</p>
+</li>
+<li><p>Object.seal(), Object.freeze(), Object.preventExtensions(), Object.isSealed(), Object.isFrozen(),<br>Object.isExtensible()<br>对象新增一系列方法，使得在 JS 中模拟 Java 变得更丝滑。我最喜欢的还是 Object.create()</p>
+</li>
+<li><p>Property attributes: writeable, value, enumerable, configurable, get, set<br>对象的属性可以添加各种配置了</p>
+</li>
+<li><p>‘use strict’;</p>
+</li>
+<li>Strict Mode:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">No more implied global variables within functions.</span><br><span class="line">this is not bound to the global object by function form.</span><br><span class="line">apply and call do not default to the global object.</span><br><span class="line">No with statement.</span><br><span class="line">Setting a writeable: false property will throw.</span><br><span class="line">Deleting a configurable: false property will throw.</span><br><span class="line">Restrictions on eval.</span><br><span class="line">eval and arguments are reserved.</span><br><span class="line">arguments not linked to parameters.</span><br><span class="line">No more arguments.caller or arguments.callee.</span><br><span class="line">No more octal literals.</span><br><span class="line">Duplicate names in an object literal or function parameters are a syntax error</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>严格模式<br>函数里没有隐式的全局变量了，你要创建全局变量必须是显式的。比如想用 a = 1 创建全局变量是不行的。<br>this 不会默认指向全局对象（比如 window 或者 global）了。<br>call 和 apply 也不会默认使用全局对象了。<br>不准用 with<br>如果一个属性的 writeable 是 false，那么你给这个属性赋值就会报错。<br>如果一个属性的 configurable 是 false，那么你 delete 这个属性就会报错。<br>对 eval 和 arguments 做出了限制。以下代码每行都会报错：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> = <span class="number">17</span>;</span><br><span class="line"><span class="built_in">arguments</span>++;</span><br><span class="line">++<span class="built_in">eval</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123; set p(<span class="built_in">arguments</span>) &#123; &#125; &#125;;</span><br><span class="line"><span class="keyword">var</span> <span class="built_in">eval</span>;</span><br><span class="line"><span class="keyword">try</span> &#123; &#125; <span class="keyword">catch</span> (<span class="built_in">arguments</span>) &#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">x</span>(<span class="params">eval</span>) </span>&#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">arguments</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line"><span class="keyword">var</span> y = <span class="function"><span class="keyword">function</span> <span class="title">eval</span>(<span class="params"></span>) </span>&#123; &#125;;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"arguments"</span>, <span class="string">"'use strict'; return 17;"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>arguments 只保存原始参数。对形参的赋值不会对 arguments 有影响。<br>不准用 arguments.caller 和 arguments.callee<br>不支持八进制字面量，比如 var a = 015 会报错。<br>对象字面量或者函数形参中，如果有重复的名字，就会报错。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/24336831" target="_blank" rel="noopener">转载</a></li>
+</ul>
 </section>
-    
-      <div class="tags">
-        <span>Tags:</span>
-        
-  <a href="/view/view/tags#node.js" >
-    <span class="tag-code">node.js</span>
-  </a>
-
-      </div>
     
     <div class="money-like">
       <div class="reward-btn">
@@ -168,7 +192,7 @@
 
 <script>
   (function () {
-    var url = 'http://github.yxxit.com/2017/08/15/nodeppt/';
+    var url = 'http://github.yxxit.com/2018/04/27/es5/';
     var banner = 'undefined'
     if (banner) {
       $('#article-banner').css({
@@ -219,7 +243,7 @@
     var gitmentConfig = "shawflying";
     if (gitmentConfig != "undefined") {
       var gitment = new Gitment({
-        id: "nodeppt",
+        id: "ES5 新增特性汇总",
         owner: "shawflying",
         repo: "yxxit-blog",
         oauth: {

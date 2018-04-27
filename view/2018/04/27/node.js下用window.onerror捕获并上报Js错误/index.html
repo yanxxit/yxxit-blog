@@ -10,7 +10,7 @@
   
   <title>
     
-      nodeppt | 云飞扬 - 个人博客
+      node.js下用window.onerror捕获并上报Js错误 | 云飞扬 - 个人博客
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -108,37 +108,38 @@
 </header>
 
     <div id="article-banner">
-  <h2>nodeppt</h2>
-  <p class="post-date">2017-08-15</p>
+  <h2>node.js下用window.onerror捕获并上报Js错误</h2>
+  <p class="post-date">2018-04-27</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
 </div>
 <main class="app-body">
   <article class="post-article">
-    <section class="markdown-content"><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nodeppt</span><br></pre></td></tr></table></figure>
-<h2 id="如何使用nodeapp"><a href="#如何使用nodeapp" class="headerlink" title="如何使用nodeapp"></a>如何使用nodeapp</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeppt start -p 8899 -d demo/</span><br></pre></td></tr></table></figure>
-<h2 id="生成html文件"><a href="#生成html文件" class="headerlink" title="生成html文件"></a>生成html文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeppt generate demo/ output -a</span><br></pre></td></tr></table></figure>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ol>
-<li>按键 O ，缩略图</li>
-<li>按键 P , 画笔</li>
-<li>按键 C ，清空</li>
-<li>按键字体粗细1234</li>
-<li>设置颜色：r,b,</li>
+    <section class="markdown-content"><h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ol>
+<li>捕获前端js异常信息，方便后期优化</li>
+<li>方便前端交互持续优化</li>
+<li>方便问题重现</li>
 </ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://www.npmjs.com/package/nodeppt" target="_blank" rel="noopener">nodeppt</a></li>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>node.js</li>
+<li>框架：koa</li>
+<li>日志模块：log4js</li>
+</ul>
+<h2 id="前端代码"><a href="#前端代码" class="headerlink" title="前端代码"></a>前端代码</h2><ol>
+<li>使用前端的window.onerror 事件进行监听前端代码的异常。</li>
+<li>当前端代码发生异常时，通过post并将异常信息上传服务器。</li>
 </ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">errorMessage, scriptURI, lineNumber, columnNumber, errorObj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> params = &#123;</span><br><span class="line">        errorMessage: errorMessage,</span><br><span class="line">        scriptURI: scriptURI,</span><br><span class="line">        lineNumber: lineNumber,</span><br><span class="line">        columnNumber: columnNumber,</span><br><span class="line">        errorObj: errorObj</span><br><span class="line">    &#125;;</span><br><span class="line">    $.post(<span class="string">'/yourserver/error'</span>, params, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(data));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="后端代码"><a href="#后端代码" class="headerlink" title="后端代码"></a>后端代码</h2><ol>
+<li>记录前端异常信息</li>
+<li>记录发生异常时设备、浏览器信息</li>
+<li>记录发生异常的ip地址</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> body = <span class="keyword">this</span>.request.body;</span><br><span class="line"><span class="keyword">var</span> userAgent = <span class="keyword">this</span>.headers[<span class="string">'user-agent'</span>];</span><br><span class="line"><span class="keyword">var</span> cookie = <span class="keyword">this</span>.headers[<span class="string">'cookie'</span>];</span><br><span class="line">logger.error(<span class="string">'--------------------前端异常信息----------------------'</span>);</span><br><span class="line">logger.error(<span class="string">"手机及浏览器环境："</span> + userAgent);</span><br><span class="line">logger.error(<span class="string">"ip地址："</span> + <span class="keyword">this</span>.ip);</span><br><span class="line">logger.error(<span class="string">"cookie："</span> + cookie);</span><br><span class="line">logger.error(<span class="string">"错误信息："</span> + body.errorMessage);</span><br><span class="line">logger.error(<span class="string">"出错文件："</span> + body.scriptURI);</span><br><span class="line">logger.error(<span class="string">"出错行号："</span> + body.lineNumber);</span><br><span class="line">logger.error(<span class="string">"出错列号："</span> + body.columnNumber);</span><br><span class="line">logger.error(<span class="string">"错误详情："</span> + body.errorObj);</span><br><span class="line">logger.error(<span class="string">"----------------------end-----------------------------"</span>);</span><br><span class="line"><span class="keyword">this</span>.body = &#123;<span class="attr">status</span>:<span class="number">200</span>,<span class="attr">data</span>:<span class="string">'ok'</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>浏览器端：<br><img src="/view/img/window-err-b.jpg" alt="浏览器端异常信息"></p>
+<p>服务器端：<br><img src="/view/img/window.error.png" alt="服务器异常信息"></p>
 </section>
-    
-      <div class="tags">
-        <span>Tags:</span>
-        
-  <a href="/view/view/tags#node.js" >
-    <span class="tag-code">node.js</span>
-  </a>
-
-      </div>
     
     <div class="money-like">
       <div class="reward-btn">
@@ -168,7 +169,7 @@
 
 <script>
   (function () {
-    var url = 'http://github.yxxit.com/2017/08/15/nodeppt/';
+    var url = 'http://github.yxxit.com/2018/04/27/node.js下用window.onerror捕获并上报Js错误/';
     var banner = 'undefined'
     if (banner) {
       $('#article-banner').css({
@@ -219,7 +220,7 @@
     var gitmentConfig = "shawflying";
     if (gitmentConfig != "undefined") {
       var gitment = new Gitment({
-        id: "nodeppt",
+        id: "node.js下用window.onerror捕获并上报Js错误",
         owner: "shawflying",
         repo: "yxxit-blog",
         oauth: {

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="yanm1ng&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/view/css/images/logo.png">
+  
+  <title>
+    
+      token | 云飞扬 - 个人博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/view/css/style.css">
+<link rel="stylesheet" href="/view/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/view/js/qrious.js"></script>
+<script src="/view/js/gitment.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/view/">
+      <div class="logo"></div>
+      <span>云飞扬 - 个人博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/view/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/view/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/view/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/view/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/view/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/view/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/view/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/view/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/view/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/view/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>token</h2>
+  <p class="post-date">2018-04-27</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body">
+  <article class="post-article">
+    <section class="markdown-content"><p>jwt</p>
+<h2 id="Token-的生命周期"><a href="#Token-的生命周期" class="headerlink" title="Token 的生命周期"></a>Token 的生命周期</h2><h3 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save jsonwebtoken</span><br></pre></td></tr></table></figure>
+<h3 id="生成token信息"><a href="#生成token信息" class="headerlink" title="生成token信息"></a>生成token信息</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">'jsonwebtoken'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//1. 验证用户名，密码是否正确</span></span><br><span class="line"><span class="comment">//2. 从新生成token信息</span></span><br><span class="line"><span class="comment">//3. 将生成的token信息存储在mongo中</span></span><br><span class="line"><span class="comment">//4. 将生成的token信息响应出去</span></span><br><span class="line">User.findOne(&#123;</span><br><span class="line">	name: req.body.name</span><br><span class="line">&#125;, (err, user) =&gt; &#123;</span><br><span class="line">	<span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line">	<span class="keyword">if</span> (!user) <span class="keyword">return</span> res.fail(<span class="string">"认证失败,用户不存在!"</span>);</span><br><span class="line">	p.log(user)</span><br><span class="line">	<span class="comment">//校验密码是否正确</span></span><br><span class="line">	<span class="keyword">if</span> (user.password != req.body.password) <span class="keyword">return</span> res.fail(<span class="string">"认证失败,密码错误!"</span>);</span><br><span class="line">	<span class="comment">//密码正确，生成token，根据用户名生成token</span></span><br><span class="line">	<span class="comment">//将信息存储在 生成sign  </span></span><br><span class="line">	<span class="keyword">let</span> token = jwt.sign(&#123;</span><br><span class="line">		name: user.name</span><br><span class="line">	&#125;, config.token_secret, &#123;</span><br><span class="line">		expiresIn: <span class="number">60</span> * <span class="number">1</span></span><br><span class="line">	&#125;) <span class="comment">//token 信息，秘钥，过期时间（以秒为单位）</span></span><br><span class="line">	user.token = token</span><br><span class="line">	user.save(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (err) <span class="keyword">return</span> res.fail(<span class="string">"认证失败"</span>);</span><br><span class="line">		<span class="keyword">return</span> res.success(&#123;</span><br><span class="line">			token: token,</span><br><span class="line">			name: user.name</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="第三方接入时，请求携带token"><a href="#第三方接入时，请求携带token" class="headerlink" title="第三方接入时，请求携带token"></a>第三方接入时，请求携带token</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> headers = &#123;</span><br><span class="line">    <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>,</span><br><span class="line">    <span class="string">"token"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"version"</span>: <span class="string">"1.0"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">	url: url,</span><br><span class="line">	method: <span class="string">'GET'</span>,</span><br><span class="line">	headers: headers,</span><br><span class="line">	json: <span class="literal">true</span>,</span><br><span class="line">	timeout: config.timeout</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">request(options, <span class="function"><span class="keyword">function</span>(<span class="params">error, response, content</span>) </span>&#123;</span><br><span class="line">	callback(error, response, content);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="前端页面获取token，并存储记录"><a href="#前端页面获取token，并存储记录" class="headerlink" title="前端页面获取token，并存储记录"></a>前端页面获取token，并存储记录</h3><p>认证获取token后，将token存放位置</p>
+<ol>
+<li>localStorage</li>
+<li>sessionStorage</li>
+<li>cookie</li>
+<li>针对单页面大应用，存放在某个标签上，或者公共的变量</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = sessionStorage.getItem(<span class="string">"userInfo"</span>);</span><br><span class="line"><span class="keyword">var</span> currUser = <span class="built_in">JSON</span>.parse(str);</span><br><span class="line"><span class="keyword">var</span> userId = currUser[<span class="string">"userID"</span>];</span><br><span class="line"><span class="keyword">var</span> token = <span class="string">'Bearer '</span> + currUser.token;</span><br></pre></td></tr></table></figure>
+<h3 id="前端请求时携带token"><a href="#前端请求时携带token" class="headerlink" title="前端请求时携带token"></a>前端请求时携带token</h3><ul>
+<li>Url?token=xxxx</li>
+<li>Post  参数中携带token</li>
+<li>Header 参数中携带token，推荐使用这种方式</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">GetInfo</span>(<span class="params">userId</span>) </span>&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url: <span class="string">'http://*******/api/orders'</span>,</span><br><span class="line">        data: &#123;</span><br><span class="line">            currUserId: userId,</span><br><span class="line">            type: <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        beforeSend: <span class="function"><span class="keyword">function</span>(<span class="params">request</span>) </span>&#123;</span><br><span class="line">            request.setRequestHeader(<span class="string">"token"</span>, token);</span><br><span class="line">        &#125;,</span><br><span class="line">        dataType: <span class="string">'JSON'</span>,</span><br><span class="line">        type: <span class="string">'GET'</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">list</span>) </span>&#123;</span><br><span class="line">        &#125;,</span><br><span class="line">        error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="获取页面传入的token信息"><a href="#获取页面传入的token信息" class="headerlink" title="获取页面传入的token信息"></a>获取页面传入的token信息</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> token = req.body.token || req.query.token || req.headers[<span class="string">'x-access-token'</span>];</span><br><span class="line"><span class="keyword">var</span> token = rq.body.token || rq.query.token || rq.headers[<span class="string">"x-access-token"</span>]; <span class="comment">// 从body或query或者header中获取token</span></span><br><span class="line"><span class="keyword">let</span> token = req.body.token || req.query.token || req.headers.token;</span><br><span class="line"><span class="keyword">if</span> (_.isEmpty(token)) <span class="keyword">return</span> res.fail(<span class="string">"The token is lose"</span>)<span class="comment">//token 信息丢失</span></span><br><span class="line">req.headers.token = token</span><br><span class="line"></span><br><span class="line"><span class="comment">//最麻烦的</span></span><br><span class="line"><span class="keyword">if</span> (_.isEmpty(req.headers.token)) &#123; <span class="comment">//headers.token有值，直接跳转</span></span><br><span class="line">	<span class="keyword">if</span> (!_.isEmpty(req.body.token)) &#123;</span><br><span class="line">		req.headers.token = req.body.token;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (!_.isEmpty(req.query.token)) &#123;</span><br><span class="line">		req.headers.token = req.query.token;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (_.isEmpty(req.headers.token)) <span class="keyword">return</span> res.fail(<span class="string">"The token is lose"</span>) <span class="comment">//token 信息丢失</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Bearer-存在的意义"><a href="#Bearer-存在的意义" class="headerlink" title="Bearer 存在的意义?"></a>Bearer 存在的意义?</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.headers.Authorization = <span class="string">`Bearer <span class="subst">$&#123;store.state.token&#125;</span>`</span></span><br></pre></td></tr></table></figure>
+<h3 id="token-中间件校验verify"><a href="#token-中间件校验verify" class="headerlink" title="token 中间件校验verify"></a>token 中间件校验verify</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> token = req.body.token || req.query.token || req.headers.token; <span class="comment">//根据需要可以调整顺序</span></span><br><span class="line"><span class="keyword">if</span> (_.isEmpty(token)) <span class="keyword">return</span> res.fail(<span class="string">"The token is lose"</span>) <span class="comment">//token 信息丢失</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//校验token中包含的信息</span></span><br><span class="line">jwt.verify(token, config.token_secret, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (err) <span class="keyword">return</span> res.fail(err.message);</span><br><span class="line">	req.headers.token = token</span><br><span class="line">	next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="是否可以使用session-进行存储？"><a href="#是否可以使用session-进行存储？" class="headerlink" title="是否可以使用session 进行存储？"></a>是否可以使用session 进行存储？</h3><ol>
+<li>可以通过token获取session中的数据</li>
+<li>通过session判断token是否存在的方式进行校验</li>
+<li>但是，这样不安全，并且性能比较低</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">User.findOne(&#123;</span><br><span class="line">	token: token</span><br><span class="line">&#125;, (err, data) =&gt; &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(data)</span><br><span class="line">	<span class="keyword">if</span> (err) <span class="keyword">return</span> res.fail(<span class="string">"token is 失效"</span>);</span><br><span class="line">	<span class="keyword">if</span> (!data) <span class="keyword">return</span> res.fail(<span class="string">"token is null"</span>)</span><br><span class="line">	next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="关于Token，你应该知道的一些事"><a href="#关于Token，你应该知道的一些事" class="headerlink" title="关于Token，你应该知道的一些事"></a>关于Token，你应该知道的一些事</h2><h4 id="一、Token-应该被保存起来（放到-local-session-stograge-或者-cookies）"><a href="#一、Token-应该被保存起来（放到-local-session-stograge-或者-cookies）" class="headerlink" title="一、Token 应该被保存起来（放到 local / session stograge 或者 cookies）"></a>一、Token 应该被保存起来（放到 <code>local / session stograge</code> 或者 <code>cookies</code>）</h4><h4 id="二、Tokens-除了像-cookie-一样有有效期，而且你可以有更多的操作方法"><a href="#二、Tokens-除了像-cookie-一样有有效期，而且你可以有更多的操作方法" class="headerlink" title="二、Tokens 除了像 cookie 一样有有效期，而且你可以有更多的操作方法"></a>二、Tokens 除了像 cookie 一样有<code>有效期</code>，而且你可以有更多的操作方法</h4><ol>
+<li>cookies 可以在浏览器关闭后删除（session cookies）；</li>
+<li>另外你可以实现服务器端的检查（通常由你使用的 Web 框架完成），还有也可以实现绝对有效期或弹性有效期</li>
+<li>Cookies 可以带有有效期地保存起来（浏览器关闭后也不删除）。</li>
+</ol>
+<p>而在 tokens 的使用中，一旦 token 过期，只需要重新获取一个。你可以使用一个接口去刷新 token：</p>
+<ol>
+<li>让旧的 token 失效；</li>
+<li>检查这个用户是不是还存在，权限是否被取消或者任何对你的程序来说是有必要的；</li>
+<li>得到一个更新了有效期的 token。</li>
+</ol>
+<p>你甚至可以把 token 原来的发布时间也保存起来，并且强制在两星期后重新登录什么的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">app.post(<span class="string">'/refresh_token'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// verify the existing token </span></span><br><span class="line">	<span class="keyword">var</span> profile = jwt.verify(req.body.token, secret);</span><br><span class="line">	<span class="comment">// if more than 14 days old, force login </span></span><br><span class="line">	<span class="keyword">if</span> (profile.original_iat - <span class="keyword">new</span> <span class="built_in">Date</span>() &gt; <span class="number">14</span>) &#123;</span><br><span class="line">		<span class="comment">// iat == issued at return res.send(401); </span></span><br><span class="line">		<span class="comment">// re-logging &#125; </span></span><br><span class="line">		<span class="comment">// check if the user still exists or if authorization hasn't been revoked </span></span><br><span class="line">		<span class="keyword">if</span> (!valid) <span class="keyword">return</span> res.send(<span class="number">401</span>);</span><br><span class="line">		<span class="comment">// re-logging </span></span><br><span class="line">		<span class="comment">// issue a new token </span></span><br><span class="line">		<span class="keyword">var</span> refreshed_token = jwt.sign(profile, secret, &#123;</span><br><span class="line">			expiresInMinutes: <span class="number">60</span> * <span class="number">5</span></span><br><span class="line">		&#125;);</span><br><span class="line">		res.json(&#123;</span><br><span class="line">			token: refreshed_token</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果你需要撤回 tokens（当 token 的生存期比较长的时候这很有必要）那么你需要一个 token 的生成管理器去作检查。</p>
+<h3 id="三、每个-CORS（跨域资源共享）请求都会带上预请求（Preflight-request）"><a href="#三、每个-CORS（跨域资源共享）请求都会带上预请求（Preflight-request）" class="headerlink" title="三、每个 CORS（跨域资源共享）请求都会带上预请求（Preflight request）"></a>三、每个 CORS（跨域资源共享）请求都会带上预请求（Preflight request）</h3><h4 id="四、XSS要更容易防范"><a href="#四、XSS要更容易防范" class="headerlink" title="四、XSS要更容易防范"></a>四、XSS要更容易防范</h4><h4 id="五、注意-token-的大小"><a href="#五、注意-token-的大小" class="headerlink" title="五、注意 token 的大小"></a>五、注意 token 的大小</h4><p>Token 机制在每次请求 API 的时候，都需要带上一个 Authorization的 Http Header 。</p>
+<p>Token 的大小其实由你储存在 token 中的信息量所决定，例如可能有 nickname，openid等开发者另外加上的信息。</p>
+<h4 id="六、有需要的话，要加密并且签名-token"><a href="#六、有需要的话，要加密并且签名-token" class="headerlink" title="六、有需要的话，要加密并且签名 token"></a>六、有需要的话，要加密并且签名 token</h4><p>虽然 TLS/SSL 机制可以隔绝大多数中间人攻击，但是如果 token 中带有了用户的敏感信息，开发者也应该要加密这些信息。<br>使用 JWT（文中第 9 点） 可以加密 token，但是由于目前大多数 Web 框架还未支持 JWT，所以可以使用 AES-CBC 算法加密 token。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">app.post(&apos;/authenticate&apos;, function(req, res) &#123;</span><br><span class="line">	// 校验用户； </span><br><span class="line">	// 加密 token； </span><br><span class="line">	var encrypted = &#123;</span><br><span class="line">		token: encryptAesSha256(&apos;shhhh&apos;, JSON.stringify(profile))</span><br><span class="line">	&#125;;</span><br><span class="line">	// 给加密后的 token 签名； </span><br><span class="line">	var token = jwt.sign(encrypted, secret, &#123;</span><br><span class="line">		expiresInMinutes: 60 * 5</span><br><span class="line">	&#125;);</span><br><span class="line">	res.json(&#123;</span><br><span class="line">		token: token</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">function encryptAesSha256(password, textToEncrypt) &#123;</span><br><span class="line">	var cipher = crypto.createCipher(&apos;aes-256-cbc&apos;, password);</span><br><span class="line">	var crypted = cipher.update(textToEncrypt, &apos;utf8&apos;, &apos;hex&apos;);</span><br><span class="line">	crypted += cipher.final(&apos;hex&apos;);</span><br><span class="line">	return crypted;</span><br><span class="line">&#125;</span><br><span class="line">// 上面就是 encrypt-then-MAC （加密后签名）做法。</span><br></pre></td></tr></table></figure>
+<h4 id="七、将-JSON-Web-Tokens-应用到-OAuth-2"><a href="#七、将-JSON-Web-Tokens-应用到-OAuth-2" class="headerlink" title="七、将 JSON Web Tokens 应用到 OAuth 2"></a>七、将 JSON Web Tokens 应用到 OAuth 2</h4><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jianshu.com/p/f9faeac8bd5e" target="_blank" rel="noopener">https://www.jianshu.com/p/f9faeac8bd5e</a></p>
+</section>
+    
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="alipay-code">
+            <div class="code-image"></div>
+            <b>使用支付宝打赏</b>
+          </span>
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    <div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>
+    
+      <div id="comments"></div>
+    
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'http://github.yxxit.com/2018/04/27/token/';
+    var banner = 'undefined'
+    if (banner) {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      var imageW = $(this).width()
+      var imageH = $(this).height()
+      
+      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+      zoom = zoom < 1 ? 1 : zoom
+      zoom = zoom > 2 ? 2 : zoom
+      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+      $('.image-view-wrap').addClass('wrap-active')
+      $('.image-view-wrap img').css({
+        'width': `${imageW}`,
+        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+      })
+      $('html').css('overflow', 'hidden')
+
+      $('.image-view-wrap').on('click', function() {
+        $(this).remove()
+        $('html').attr('style', '')
+      })
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "shawflying";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "token",
+        owner: "shawflying",
+        repo: "yxxit-blog",
+        oauth: {
+          client_id: "66cdd646a4b3f9468cee",
+          client_secret: "01ada0c8f17bec5d1a9766575b60996cbc05a2a7"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/view/js/script.js"></script>
+  </body>
+</html>

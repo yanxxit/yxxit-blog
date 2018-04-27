@@ -10,7 +10,7 @@
   
   <title>
     
-      nodeppt | 云飞扬 - 个人博客
+      node.js 模块之 pm2 | 云飞扬 - 个人博客
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -108,37 +108,24 @@
 </header>
 
     <div id="article-banner">
-  <h2>nodeppt</h2>
-  <p class="post-date">2017-08-15</p>
+  <h2>node.js 模块之 pm2</h2>
+  <p class="post-date">2018-04-27</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
 </div>
 <main class="app-body">
   <article class="post-article">
-    <section class="markdown-content"><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nodeppt</span><br></pre></td></tr></table></figure>
-<h2 id="如何使用nodeapp"><a href="#如何使用nodeapp" class="headerlink" title="如何使用nodeapp"></a>如何使用nodeapp</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeppt start -p 8899 -d demo/</span><br></pre></td></tr></table></figure>
-<h2 id="生成html文件"><a href="#生成html文件" class="headerlink" title="生成html文件"></a>生成html文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeppt generate demo/ output -a</span><br></pre></td></tr></table></figure>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ol>
-<li>按键 O ，缩略图</li>
-<li>按键 P , 画笔</li>
-<li>按键 C ，清空</li>
-<li>按键字体粗细1234</li>
-<li>设置颜色：r,b,</li>
-</ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://www.npmjs.com/package/nodeppt" target="_blank" rel="noopener">nodeppt</a></li>
-</ol>
+    <section class="markdown-content"><h2 id="pm2-简介"><a href="#pm2-简介" class="headerlink" title="pm2 简介"></a>pm2 简介</h2><p>pm2 是一个带有负载均衡功能的Node应用的进程管理器.<br>当你要把你的独立代码利用全部的服务器上的所有CPU，并保证进程永远都活着，0秒的重载， PM2是完美的。它非常适合IaaS结构，但不要把它用于PaaS方案（随后将开发Paas的解决方案）.</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h2 id="pm2-升级"><a href="#pm2-升级" class="headerlink" title="pm2 升级"></a>pm2 升级</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pm2 save</span><br><span class="line">npm install -g pm2</span><br><span class="line">pm2 update</span><br></pre></td></tr></table></figure>
+<h3 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
+<h3 id="开启进程"><a href="#开启进程" class="headerlink" title="开启进程"></a>开启进程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pm2 start app.js -i 3 --name node-api # 开启3个名称为node-api的进程</span><br><span class="line">pm2 start app.js -i max --name node-api # 根据有效CPU数目启动最大进程数目</span><br><span class="line">pm2 monit # 监视所有进程</span><br><span class="line">pm2 list # 显示所有进程状态</span><br><span class="line">pm2 logs node-api # 查看进程日志 默认查看所有</span><br><span class="line">pm2 stop all # 停止所有进程</span><br><span class="line">pm2 restart all # 重启所有进程</span><br><span class="line">pm2 reload all # 0秒停机重载进程 (用于 NETWORKED 进程)</span><br><span class="line">pm2 delete all # 杀死全部进程</span><br><span class="line">pm2 startup # 产生 init 脚本 保持进程活着</span><br><span class="line">pm2 web # 运行健壮的 computer API endpoint (http://localhost:9615)</span><br><span class="line">pm2 start app.js -x #用fork模式启动 app.js 而不是使用 cluster</span><br><span class="line">pm2 start app.js -x -- -a 23 # 用fork模式启动 app.js 并且传递参数 (-a 23)</span><br><span class="line">pm2 start app.json # 启动进程, 在 app.json里设置选项</span><br></pre></td></tr></table></figure>
+<h3 id="支持CoffeeScript"><a href="#支持CoffeeScript" class="headerlink" title="支持CoffeeScript:"></a>支持CoffeeScript:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start my_app.coffee</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.douban.com/note/314200231/" target="_blank" rel="noopener">PM2 介绍</a></li>
+<li><a href="https://github.com/Unitech/pm2" target="_blank" rel="noopener">PM2 官方文档</a></li>
+</ul>
 </section>
-    
-      <div class="tags">
-        <span>Tags:</span>
-        
-  <a href="/view/view/tags#node.js" >
-    <span class="tag-code">node.js</span>
-  </a>
-
-      </div>
     
     <div class="money-like">
       <div class="reward-btn">
@@ -168,7 +155,7 @@
 
 <script>
   (function () {
-    var url = 'http://github.yxxit.com/2017/08/15/nodeppt/';
+    var url = 'http://github.yxxit.com/2018/04/27/node.js 模块之 pm2/';
     var banner = 'undefined'
     if (banner) {
       $('#article-banner').css({
@@ -219,7 +206,7 @@
     var gitmentConfig = "shawflying";
     if (gitmentConfig != "undefined") {
       var gitment = new Gitment({
-        id: "nodeppt",
+        id: "node.js 模块之 pm2",
         owner: "shawflying",
         repo: "yxxit-blog",
         oauth: {
