@@ -1,10 +1,26 @@
 ---
+layout: post
 title: token
+date: 2018-04-27 14:54:28
+tags: api
 ---
 
-jwt
+JSON Web Token（JWT）是一个非常轻巧的规范。这个规范允许我们使用JWT在用户和服务器之间传递安全可靠的信息。其JWT的组成一个JWT实际上就是一个字符串，它由三部分组成，头部、载荷与签名。
 
-## Token 的生命周期
+## Token 相对于token Auth的优点
+
+![img](https://ws4.sinaimg.cn/large/006tKfTcgy1fqr8iefeeij30w80gn422.jpg)
+
+- 支持跨域访问: Cookie是不允许垮域访问的，这一点对Token机制是不存在的，前提是传输的用户认证信息通过HTTP头传输.
+- 无状态(也称：服务端可扩展行):Token机制在服务端不需要存储session信息，因为Token 自身包含了所有登录用户的信息，只需要在客户端的cookie或本地介质存储状态信息.
+- 更适用CDN: 可以通过内容分发网络请求你服务端的所有资料（如：javascript，HTML,图片等），而你的服务端只要提供API即可.
+- 去耦: 不需要绑定到一个特定的身份验证方案。Token可以在任何地方生成，只要在你的API被调用的时候，你可以进行Token生成调用即可.
+- 更适用于移动应用: 当你的客户端是一个原生平台（iOS, Android，Windows 8等）时，Cookie是不被支持的（你需要通过Cookie容器进行处理），这时采用Token认证机制就会简单得多。
+- CSRF:因为不再依赖于Cookie，所以你就不需要考虑对CSRF（跨站请求伪造）的防范。
+- 性能: 一次网络往返时间（通过数据库查询session信息）总比做一次HMACSHA256计算 的Token验证和解析要费时得多.
+- 不需要为登录页面做特殊处理: 如果你使用Protractor 做功能测试的时候，不再需要为登录页面做特殊处理.
+- 基于标准化:你的API可以采用标准化的 JSON Web Token (JWT). 这个标准已经存在多个后端库（.NET, Ruby, Java,Python, PHP）和多家公司的支持（如：Firebase,Google, Microsoft）.
+
 
 ### 安装模块
 
@@ -46,6 +62,27 @@ User.findOne({
 	});
 })
 ```
+载荷（Payload）
+
+```json
+    { "iss": "Online JWT Builder", 
+      "iat": 1416797419, 
+      "exp": 1448333419, 
+      "aud": "www.example.com", 
+      "sub": "jrocket@example.com", 
+      "GivenName": "Johnny", 
+      "Surname": "Rocket", 
+      "Email": "jrocket@example.com", 
+      "Role": [ "Manager", "Project Administrator" ] 
+    }
+```
+- iss: 该JWT的签发者，是否使用是可选的；
+- sub: 该JWT所面向的用户，是否使用是可选的；
+- aud: 接收该JWT的一方，是否使用是可选的；
+- exp(expires): 什么时候过期，这里是一个Unix时间戳，是否使用是可选的；
+- iat(issued at): 在什么时候签发的(UNIX时间)，是否使用是可选的；
+  其他还有：
+- nbf (Not Before)：如果当前时间在nbf里的时间之前，则Token不被接受；一般都会留一些余地，比如几分钟；，是否使用是可选的；
 
 
 
@@ -263,10 +300,13 @@ function encryptAesSha256(password, textToEncrypt) {
 // 上面就是 encrypt-then-MAC （加密后签名）做法。
 ```
 
-#### 七、将 JSON Web Tokens 应用到 OAuth 2
 
 
-
-## 参考
-
+## 参考目录：
+https://stormpath.com/blog/build-secure-user-interfaces-using-jwts
+https://auth0.com/blog/2014/01/27/ten-things-you-should-know-about-tokens-and-cookies/
+https://www.quora.com/Is-JWT-JSON-Web-Token-insecure-by-design
+https://github.com/auth0/node-jsonwebtoken/issues/36
+http://christhorntonsf.com/secure-your-apis-with-jwt/
+https://www.cnblogs.com/xiekeli/p/5607107.html
 https://www.jianshu.com/p/f9faeac8bd5e
