@@ -17,9 +17,14 @@
       type: 'get',
       url: 'https://api.github.com/users/<%= config.github_username %>/repos',
       success: function (data) {
-        var repos = data.sort(function(a, b) {
+        var repos = data
+        .sort(function(a, b) {
           return (b.stargazers_count - a.stargazers_count)
-        }).slice(0, 6)
+        })
+        .filter(function(m){
+          return m.fork == false
+        })
+        .slice(0, 10)
         var cardHtml = repos.map(function(item) {
           var description = item.description
           if (description.replace(/[\u0391-\uFFE5]/g, "aa").length > 72) {

@@ -90,3 +90,6 @@ deploy:
   repo: https://github.com/shawflying/yxxit-blog.git
   branch: master
 
+
+github_username: shawflying
+zhihu_username: yan-xiao-3-65
